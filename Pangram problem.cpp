@@ -1,9 +1,11 @@
+
 #include<iostream>
 /* 
 Auther:Rishabh Tripathi
 Topic:-Pangram problem
 */
 #include<string>
+#include<cstring>
 #include<iomanip>
 using namespace std;
 int main(){
@@ -23,8 +25,8 @@ int main(){
         for(int i=0;i<s;++i){
             charracter_int=r[i];
             if ((charracter_int>=97 && charracter_int<=122)||(charracter_int>=65 && charracter_int<=90)){
-                check=rt.find(r[i]);
-                if(check==(-1)) rt+=r[i];}
+                check=rt.find(tolower(r[i]));
+                if(check==(-1)) rt+=tolower(r[i]);}
                 }
         //cout<<rt;
         s=rt.length();
