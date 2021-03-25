@@ -120,7 +120,7 @@ void PostOrderedTransversal(bineryTree *root){
             root=root->leftChild;
         }
         root=array->top();
-        root->pop();
+        array.pop();
         if(root->rightChild==array.top()){
             array.pop();
             array.push(root);
@@ -152,25 +152,5 @@ void LevalOrderedTransversal(bineryTree *root){
         array.push(root->rightChild);
     }
 }
-    
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
