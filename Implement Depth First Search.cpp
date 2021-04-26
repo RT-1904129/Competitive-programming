@@ -8,8 +8,10 @@ void DFS(vector<int>adj_list[],stack<int>&stack,vector<bool>&visited){
         return;
     int vertex=stack.top();
     stack.pop();
-    visited[vertex]=true;
-    cout<<vertex<<" ";
+    if(visited[vertex]==false){
+        visited[vertex]=true;
+        cout<<vertex<<" ";
+    }
     for(auto i:adj_list[vertex]){
          if(!visited[i]){
             stack.push(i);
