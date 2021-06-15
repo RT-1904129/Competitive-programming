@@ -1,32 +1,35 @@
-#include<iostream>
-#include<unordered_map>
-#include<string>
-using namespace std;
+#include <iostream>
+#include <algorithm>
+#include <utility>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+typedef long int rt;
+using namespace std; 
 
-typedef long long int rt;
-rt Permutation_Palindrome(string str1){
-    unordered_map<char,rt>array1;
-    rt count=0,count_dublication=0;
-    for(rt i=0;i<str1.length();++i){
-        if(array1.find(str1[i])==array1.end()) array1[str1[i]]=1;
-        else array1[str1[i]]+=1;
+void Permutation_Palindrome(string &str){
+    unordered_map<char,rt>arr;
+    unordered_set<char>array{str.begin(),str.end()};
+    for(rt i=0;i<str.length();++i){
+        arr[str[i]]++;
     }
-    for(auto itr=array1.begin();itr!=array1.end();++itr){
-        if(((*itr).second%2)!=0) count++;
-        else count_dublication++;
+    rt countEven=0,countOdd=0;
+    for(auto itr=arr.begin();itr!=arr.end();++itr){
+        if((itr->second % 2 )==0) countEven++;
+        else countOdd++;
     }
-    if(count==1) return 1;
-    else if(count_dublication==array1.size()) return 1;
-    else return 0;
+    if((countEven!=0)&& (countOdd==1 || countOdd==0)) cout<<"YES\n";
+    else if(array.size()==1) cout<<"YES\n";
+    else cout<<"NO\n";
 }
 
-int main(){
-    rt a;
-    string arr1;
-    cin>>a;
-    for(rt i=0;i<a;++i){
-        cin>>arr1;
-        if(Permutation_Palindrome(arr1))  cout<<"YES"<<"\n";
-        else cout<<"NO"<<"\n";
+int main() {
+    rt t;
+    cin>>t;
+    string str;
+    ios::sync_with_stdio(false);
+    for(rt i=0;i<t;++i){
+        cin>>str;
+        Permutation_Palindrome(str);
     }
 }
